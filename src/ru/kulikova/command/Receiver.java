@@ -13,7 +13,6 @@ public class Receiver {
     private Paragraph currentParagraph;
 
 
-    // TODO конструктор
     public Receiver(Paragraph paragraph) {
         this.currentParagraph = paragraph;
     }
@@ -63,14 +62,13 @@ public class Receiver {
         System.out.println("Игра сохранена");
     }
 
-    // TODO из файлика загружаем название парарафа - и устанавливаем текущим - запускаем метод отрисовки
     public void upload(){
         System.out.println("Загрузка игры...");
         BinHandler<Paragraph> receiverBinHandler = new BinHandler<>();
         try {
             setCurrentParagraph(receiverBinHandler.readFromFile());
             start();
-        } catch (RuntimeException e){
+        } catch (RuntimeException e){ // Не понимаю в чем ошибка...
             System.out.println("Ранее сохраненных игр не обнаружено");
             getGame().openMenu();
         }
@@ -82,10 +80,10 @@ public class Receiver {
 
     private void choiceParagraph(){
         System.out.println(currentParagraph.getText());
-        System.out.println("Для того, чтобы выбрать вариант " + currentParagraph.getVariant1().getName() +
-                " нажмите 1");
-        System.out.println("Для того, чтобы выбрать вариант " + currentParagraph.getVariant2().getName() +
-                " нажмите 2");
+        System.out.println(currentParagraph.getDescription1() + currentParagraph.getVariant1().getName() + ". " +
+                "Для выбора этого варианта нажмите 1");
+        System.out.println(currentParagraph.getDescription2() + currentParagraph.getVariant2().getName() + ". " +
+                "Для выбора этого варианта нажмите 2");
         System.out.println("Для того, чтобы выйти в основное меню, нажмите 3");
     }
 

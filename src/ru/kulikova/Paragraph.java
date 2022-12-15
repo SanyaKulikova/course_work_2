@@ -8,6 +8,8 @@ public class Paragraph implements Serializable {
     private String text;
     transient private Paragraph variant1;
     transient private Paragraph variant2;
+    transient private String description1 = "";
+    transient private String description2 = "";
 
 
     public Paragraph(String name, String text) {
@@ -37,6 +39,22 @@ public class Paragraph implements Serializable {
 
     public void setVariant2(Paragraph variant2) {
         this.variant2 = variant2;
+    }
+
+    public String getDescription1() {
+        return description1;
+    }
+
+    public void setDescription1(String description1) {
+        this.description1 = description1;
+    }
+
+    public String getDescription2() {
+        return description2;
+    }
+
+    public void setDescription2(String description2) {
+        this.description2 = description2;
     }
 
     public boolean getGameResult() {
